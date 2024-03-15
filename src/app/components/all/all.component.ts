@@ -8,12 +8,16 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AllComponent implements OnInit {
 
+  list: Array<any>=[];
+
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
+    this.http.get<any>('https://jsonplaceholder.typicode.com/posts')
       .subscribe(response=>{
         console.log(response);
+        this.list=response;
+        console.log(this.list)
       });
   }
 
