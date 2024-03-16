@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatButtonModule,
     HttpClientModule,
     MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [],
