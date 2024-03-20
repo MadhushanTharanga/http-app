@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-new',
@@ -9,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class NewComponent  {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private _snackBar: MatSnackBar ) { }
   form = new FormGroup({
 
     id: new FormControl('',[Validators.required ,Validators.maxLength(5)]),
@@ -25,7 +26,15 @@ export class NewComponent  {
       body:this.form.get('body')?.value
     })
       .subscribe(response=>{
-        console.log(response);
+        if (response){
+          this._snackBar.open('saved','close',{
+
+            horizontalPosition:'end',
+            verticalPosition:'bottom',
+            duration:5000,
+            direction:'ltr'
+          })
+        }
 
       });
   }
