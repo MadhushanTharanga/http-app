@@ -10,7 +10,7 @@ export class NewComponent  {
 
   form = new FormGroup({
 
-    id: new FormControl('',Validators.required),
+    id: new FormControl('',[Validators.required ,Validators.maxLength(5)]),
     userId: new FormControl('',Validators.required),
     title: new FormControl('',Validators.required),
     body: new FormControl('',Validators.required)
