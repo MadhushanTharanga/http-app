@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-new',
@@ -8,6 +9,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class NewComponent  {
 
+  constructor(private http:HttpClient) { }
   form = new FormGroup({
 
     id: new FormControl('',[Validators.required ,Validators.maxLength(5)]),
@@ -16,7 +18,16 @@ export class NewComponent  {
     body: new FormControl('',Validators.required)
 });
   crateDate(){
-    console.log(this.form)
+    this.http.post<any>('https://jsonplaceholder.typicode.com/posts',{
+      id:this.form.get('id')?.value,
+      userId:this.form.get('userId')?.value,
+      title:this.form.get('title')?.value,
+      body:this.form.get('body')?.value
+    })
+      .subscribe(response=>{
+        console.log(response);
+
+      });
   }
 
 }
