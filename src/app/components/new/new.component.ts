@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-new',
@@ -10,10 +10,10 @@ export class NewComponent  {
 
   form = new FormGroup({
 
-    id: new FormControl(),
-    userId: new FormControl(),
-    title: new FormControl(),
-    body: new FormControl()
+    id: new FormControl('',Validators.required),
+    userId: new FormControl('',Validators.required),
+    title: new FormControl('',Validators.required),
+    body: new FormControl('',Validators.required)
 });
   crateDate(){
     console.log(this.form)

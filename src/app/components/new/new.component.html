@@ -26,7 +26,7 @@
         </mat-form-field>
       </div>
       <div class="col-12">
-        <button mat-raised-button color="primary" type="submit">Save Data</button>
+        <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Save Data</button>
       </div>
     </div>
   </div>
