@@ -20,7 +20,7 @@ export class UpdateComponent  {
     body: new FormControl('',Validators.required)
   });
   updateData(){
-    this.http.put<any>('https://jsonplaceholder.typicode.com/posts',{
+    this.http.put<any>('https://jsonplaceholder.typicode.com/posts/'+this.searchId,{
       id:this.form.get('id')?.value,
       userId:this.form.get('userId')?.value,
       title:this.form.get('title')?.value,
@@ -42,7 +42,12 @@ export class UpdateComponent  {
   loadData(){
     this.http.get<any>('https://jsonplaceholder.typicode.com/posts?id='+this.searchId)
       .subscribe(response=>{
-        console.log(response);
+        this.form.patchValue({
+          id:response[0].id,
+          userId:response[0].userId,
+          title:response[0].title,
+          body:response[0].body,
+        })
 
       });
   }
