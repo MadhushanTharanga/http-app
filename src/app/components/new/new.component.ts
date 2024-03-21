@@ -27,10 +27,10 @@ export class NewComponent  {
     })
       .subscribe(response=>{
         if (response){
-          this._snackBar.open('saved','close',{
+          this._snackBar.open('saved !!','close',{
 
-            horizontalPosition:'end',
-            verticalPosition:'bottom',
+            horizontalPosition:'center',
+            verticalPosition:'top',
             duration:5000,
             direction:'ltr'
           })
